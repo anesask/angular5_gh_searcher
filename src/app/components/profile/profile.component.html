@@ -1,0 +1,69 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Enter Github Username..."
+          [(ngModel)]="username" name="username" (keyup)="searchUser()">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">{{user.name}}</h4>
+      <p class="card-text">{{user.bio}}</p>
+      <div class="row">
+        <div class="col-md-4">
+          <img class="img-thumbnail" src="{{user.avatar_url}}">
+        </div>
+        <div class="col-md-8">
+          <div class="stats">
+              <span class="badge badge-success">{{user.public_repos}} Public Repos</span>
+              <span class="badge badge-danger">{{user.public_gists}} Public Gists</span>
+              <span class="badge badge-light">{{user.followers}} Followers</span>
+              <span class="badge badge-light">{{user.following}} Following</span>
+          </div> 
+          <br>
+          <ul class="list-group">
+              <li class="list-group-item">Username: <b>{{user.login}}</b></li>
+              <li class="list-group-item">Location: {{user.location}}</li>
+              <li class="list-group-item">Blog: <a href="{{user.blog}}" targer="_blank">{{user.blog}}</a></li>
+              <li class="list-group-item">Member since: {{user.created_at | date: 'dd.MM.yyyy'}}</li>
+            </ul>         
+        </div>
+
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="container">
+  <div class="card">
+      <h5 class="card-header text-center">User Repositories</h5>
+        <div class="card-body">
+          <div *ngFor = "let repo of repos">
+          <div class="row">
+            <div class="col-md-8">
+              <p><a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></p>
+              <p>{{repo.description}}</p>
+            </div>
+            <div class="col-md-4">
+              <span class="badge badge-dark">{{repos.watchers}} Watchers</span>
+              <span class="badge badge-dark">{{repos.forks}} Forks</span>
+              <span class="badge badge-dark">{{repos.stars}} Stars</span>
+            </div>
+            </div>
+            <hr>
+          </div>
+      </div>
+  </div>
+</div>
